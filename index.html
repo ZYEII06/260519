@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 互動猜拳遊戲 - 純白去背版</title>
+    
+    <!-- 引入 MediaPipe 必備的三大核心套件 -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+            font-family: "微軟正黑體", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        #status-text {
+            color: #4a5568;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            background: #edf2f7;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        canvas {
+            border: 4px solid #e2e8f0;
+            border-radius: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        video {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 狀態提示欄 -->
+        <div id="status-text">正在初始化 AI 模型與攝影機...</div>
+        <br>
+        <!-- 隱藏的原始視訊節點 -->
+        <video id="webcam" autoplay playsinline></video>
+        <!-- 遊戲主要渲染畫布 -->
+        <canvas id="output_canvas" width="640" height="480"></canvas>
+    </div>
+
+    <!-- 載入核心遊戲邏輯 -->
+    <script src="sketch.js"></script>
+</body>
+</html>
